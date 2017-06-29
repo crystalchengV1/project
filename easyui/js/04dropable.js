@@ -1,0 +1,19 @@
+$(function(){
+	$.fn.droppable.defaults.disabled = true;
+	$('#box1').droppable({
+		accept:'#box',
+		onDragEnter:function(e,source){
+			$(this).css('background','orange');
+		},
+		onDragOver:function(e,source){
+			$(this).css('background','blue');
+		},
+		onDragLeave:function(e,source){
+			$(this).css('background','green');
+		},
+		onDrop:function(e,source){
+			$(this).css('background','red');
+		},
+	});
+	$('#box').draggable({});
+})
