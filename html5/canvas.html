@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas width="600" height="600" style="background-color:#abcedf;" id="canvas">
+			您的ie浏览器该升级了，不知道canvas标签
+		</canvas>
+		<script type="text/javascript">
+			var canvas=document.getElementById("canvas");
+			var cxt=canvas.getContext("2d");
+			cxt.lineWidth=10;//画笔的宽度
+			cxt.strokeStyle="aqua";//画笔的颜色
+			cxt.moveTo(20,20);//设定笔触的位置
+			cxt.lineTo(20,120);//设定移动的方式
+			cxt.stroke();//画线
+			cxt.closePath();//封闭路径
+			
+			
+			//画一个空心圆形（凡是路径图形必须新开始路径，画完图之后必须结束路径）
+			cxt.beginPath();//开始新的路径
+			cxt.lineWidth=3;//画笔的宽度
+			cxt.strokeStyle="antiquewhite";//画笔的颜色
+			cxt.arc(200,200,50,0,360,false);//横坐标（200,200），半径，角度(0.360)，顺时针、逆时针
+			cxt.stroke();
+			cxt.closePath();
+			
+			//画一个实心圆形
+			cxt.beginPath();
+			cxt.fillStyle="azure";
+			cxt.lineWidth=6;//画笔的宽度
+			cxt.arc(200,300,50,0,360,false);
+			cxt.fill();//填充
+			cxt.stroke();//外边框
+			cxt.closePath();
+			
+			//画一个矩形
+			cxt.beginPath();
+			cxt.rect(300,20,150,100);//x.y,widht,height
+			cxt.stroke();
+			//其他方法
+			cxt.strokeRect(300,150,100,100);
+			cxt.closePath();
+			//实心矩形
+			cxt.beginPath();
+			cxt.rect(300,350,100,100);
+			cxt.fill();
+			cxt.closePath();
+			//其他方法(提倡用这种方式画实心矩形)
+			cxt.fillRect(300,390,100,100);
+			//设置文字
+			cxt.font="40px 宋体";
+			cxt.fillText("你好。。。。。。。。。。。。",20,400);
+			cxt.lineWidth=1;
+			cxt.strokeText("你好。。。。。。。。。。。。",20,500);
+			//画图 把一副图片画到画布中(webkit内核不支持，chrome和猎豹不支持)
+			var img=new Image();
+			img.src="img/xiaomm.jpg";
+			cxt.drawImage(img,20,170,230,306);
+			//画一个三角形
+			cxt.beginPath();
+			cxt.moveTo(50,100);
+			cxt.lineTo(40,200);
+			cxt.lineTo(70,200);
+			cxt.closePath();//三角形画路径需要先闭合途经再画图
+			cxt.stroke();
+			
+			//画一个三角形
+			cxt.beginPath();
+			cxt.moveTo(50,150);
+			cxt.lineTo(40,250);
+			cxt.lineTo(70,250);
+			cxt.closePath();
+			cxt.fill();
+			
+			//旋转线条
+			cxt.save();
+			cxt.translate(20,20);
+			//设置旋转角度,参数是弧度，角度*Math.PI/180
+			cxt.rotate(-30*Math.PI/180);
+			cxt.beginPath();
+			cxt.lineWidth=3;//画笔的宽度
+			cxt.strokeStyle="antiquewhite";//画笔的颜色
+			cxt.moveTo(0 ,0);
+			cxt.lineTo(20,100);
+			cxt.stroke();
+			cxt.closePath();
+			cxt.restore();
+			
+			//旋转图片
+			cxt.save();
+			cxt.translate(20,170);
+			cxt.rotate(-10*Math.PI/180);
+			var img=new Image();
+			img.src="img/xiaomm.jpg";
+			cxt.drawImage(img,0,0,230,306);
+			cxt.restore();
+		</script>
+	</body>
+</html>

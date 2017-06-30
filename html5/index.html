@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+		
+			header
+			{
+				height: 150px;
+				background-color: #abcdef;
+			}
+			nav
+			{
+				height:60px;
+				background-color: #f90;
+				margin-top: 80px;
+			}
+			nav ul li
+			{
+				height: 60px;
+				float: left;
+				margin-right: 40px;
+				line-height: 60px;
+				width:120px;
+			}
+			div{
+				margin-top: 10px;
+				height: 1700px;
+			}
+			section
+			{
+				height: 1700px;
+				background-color: #ABCDEF;
+				width: 70%;
+				float:left;
+			}
+			aside
+			{
+				width:28%;
+				height: 700px;
+				background-color: #ABCDEF;
+				float:right;
+			}
+			footer
+			{
+				height: 100px;
+				background-color: #ABCDEF;
+				clear: both;
+				margin-top: 10px;
+			}
+			article
+			{
+				background-color: #f90;
+				width: 500px;
+				height: 200px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			span
+			{
+				width: 100px;
+				height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+	<header>
+		<p>这是一个header标签</p>
+		<nav>
+			<ul>
+				<li>标题</li>
+				<li>目录</li>
+				<li>索引</li>
+				<li>标题</li>
+				<li>标题</li>
+			</ul>
+		</nav>
+	</header>
+	<div>
+		<section>
+			<p>这是一个section标签</p>
+			<article>
+				<h2>标题</h2>
+				<p>第1行第1行<br/>
+					第2行第2行<br/>
+					第3行第4行<br/>
+					第4行第4行<br/>
+				</p>
+			</article>
+			<hr />
+			<article>
+				<h2>啦啦啦</h2>
+				<p>
+					第1行第1行<br/>
+					第2行第2行<br/>
+					第3行第4行<br/>
+					第4行第4行<br/>
+				</p>
+			</article>
+			<hr />
+			<figure>
+				<figcaption>UFO</figcaption>
+				<p>不明飞行物 unknown flying object</p>
+			</figure>
+			<figure>
+				<dt>dt</dt>
+				<dd>dadadadaddad</dd>
+			</figure>
+				<hr />
+			<dialog open>
+				<dt>fcsdfsfsfsf</dt>
+				<dd>场vsdgdfgertbfg</dd>
+				<dt>fcsdfsfsfsf</dt>
+				<dd>场vsdgdfgertbfg</dd>
+			</dialog>
+				<hr />
+			
+			<hr />
+			<span oncontextmenu="candan">
+				右击点击试试
+			</span>
+			<menu type="context" id="candan">
+				<menuitem label="菜单" onclick="alert("dasds");">
+					123132
+				</menuitem>
+			</menu>
+			<hr />
+			<meter min="0" max="10" value="7" low="3" high="7">
+			</meter>
+			<progress MAX="100" value="0" id="pro"></progress>
+			<script type="text/javascript">
+				var pro=document.getElementById("pro");
+				setInterval(function(){
+					pro.value+=1;
+				},100);
+			</script>
+			<hr />
+			<details>
+				<dt>dsdsdsfds</dt>
+				<dd>122222222222</dd>
+				<dt>dsdsdsfds</dt>
+				<dd>122222222222</dd>
+				<dt>dsdsdsfds</dt>
+				<dd>122222222222</dd>
+				<dt>dsdsdsfds</dt>
+				<dd>122222222222</dd>
+			</details>
+			<hr />
+			<ruby>
+				夼<rp>(</rp><rt>kuang</rt><rp>)</rp>
+			</ruby>
+			<mark></mark>
+			冬奥会牛<mark>怒火</mark>就很久
+		</section>
+		<aside>
+			<p>这是一个aside标签</p>
+			<hgroup>
+				<h3>h3h3h3h3h3h3</h3>
+				<h3>121331331333</h3>
+				<h3>wenjhouidxnfj</h3>
+				<h3>wenjhouidxnfj</h3>
+			</hgroup>
+		
+		</aside>
+	</div>
+	<footer>
+		<p>这是一个footerr标签</p>
+		<hr />
+		<small>这里是法律条文</small>
+		<small>联系我们</small>
+		<small>客户意见</small>
+		<small>这里是法律条文</small>
+	</footer>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*div
+			{
+				width:300px;
+				height: 300px;
+				background: url(img/t1.jpg)  no-repeat;
+				border-image-source:url(../img/border.png);
+				border-image-width: 27px;
+				border-image-slice: 27;
+				border-image-outset: 0px;
+				border-image-repeat:repeat;
+			}*/
+			div{
+				width:96px;
+				height:48px;
+				/*border: 4px solid red;
+				border-radius:30px/30px;*/
+				border-top: 2px solid red;
+				border-right: 2px solid red;
+				border-bottom: 50px solid red;
+				border-left: 2px solid red;
+				border-radius: 100px;
+				position: relative;
+			}
+			#test:after{
+				content:"";
+				width: 8px;
+				height: 8px;
+				border: 20px solid red;
+				position: absolute;
+				left:0;
+				top:25px;
+				border-radius: 50px;
+				background: #fff;
+			}
+			/*#test:before{
+				content:"";
+				width: 8px;
+				height: 8px;
+				border: 20px solid #fff;
+				position: absolute;
+				right: 0;
+				top:25px;
+				border-radius:46px;
+				background: red;
+			}*/
+			p{
+				font-size: 40px;
+				-webkit-box-reflect: below 2px -webkit-linear-gradient(top,transparent 50%,#fff);
+			}
+			img
+			{
+				-webkit-box-reflect: below 2px -webkit-linear-gradient(top,transparent,#fff);
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+		<img src="img/t1.jpg" alt="" />
+		<p>你好啊啊啊啊啊</p>
+	</body>
+</html>

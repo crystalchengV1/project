@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>画图工具</title>
+		<style type="text/css">
+			*{
+				padding:0;
+				margin: 0;
+				list-style: none;
+				border: 0;
+			}
+			body
+			{
+				background: #abcdef;
+			}
+			#top
+			{
+				width: 900px;
+				height: 80px;
+				font-size: 40px;
+				margin:10px auto;
+				text-align: center;
+				line-height: 80px;
+				margin-bottom: 0;
+			}
+			#section
+			{
+				width:880px;
+				height: 550px;
+				background: gray;
+				margin: 0 auto;
+				padding:10px;
+			}
+			#footer
+			{
+				width:900px;
+				height: 80px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			#canvas
+			{
+				background: #fff;
+			}
+			#tool
+			{
+				height: 150px;
+				text-align:center;
+			}
+			#tool li
+			{
+				float: left;
+				width: 175px;
+				height: 140px;
+				background: #ccc;
+				border-right: 1px solid red;
+			}
+			#image
+			{
+				text-align:left;
+				padding:20px;
+				
+			}
+			#image li
+			{
+				width: 100px;
+				height: 30px;
+				list-style: square inside;
+				border: 0;
+			}
+			#image li button
+			{
+				background: gray;
+				border: 1px solid #000;
+			}
+			#means 
+			{
+				padding: 20px;
+			}
+			#means li 
+			{
+				height: 20px;
+				width: 40px;
+				border: 0;
+				border: 1px solid #000;
+				margin-top: 10px;
+			}
+			#means li  img
+			{
+				height: 20px;
+				width:20px;
+			}
+			#sharp
+			{
+				padding: 20px;
+			}
+			#sharp li
+			{
+				height: 20px;
+				width: 40px;
+				border: 0;
+				border: 1px solid #000;
+				margin-top: 10px;
+			}
+			#sharp li img
+			{
+				height: 20px;
+				width:20px;
+			}
+			#size
+			{
+				padding: 10px;
+			}
+			#size li
+			{
+				height: 20px;
+				width: 120px;
+				border: 1px solid #ccc;
+			}
+			#color
+			{
+				padding: 20px;
+			}
+			#color li
+			{
+				height: 20px;
+				width: 20px;
+				border:1px solid #000;
+				margin-bottom: 10px;
+				margin: 2px;
+			}
+			#image li button:hover,#sharp li:hover,#means li:hover,#color li:hover
+			{
+				border:1px solid #fff;
+			}
+			#size li img:hover
+			{
+				border:1px solid #fff;
+				background: yellow;
+			}
+			
+			#color #red{background:red}
+			#color #green{background:green}
+			#color #blue{background:blue}
+			#color #yellow{background:yellow}
+			#color #white{background:white}
+			#color #black{background:black}
+			#color #pink{background:pink}
+			#color #purple{background:purple}
+			#color #cyan{background:cyan}
+			#color #orange{background:orange}
+			#canvas:hover{
+				cursor: crosshair;
+			}
+			#myform
+			{
+				margin-left: 20px;
+				margin-top: -20px;
+			}
+		</style>
+	</head>
+	<body>
+		<header id="top">
+			HTML5在线画板
+		</header>
+		<hr />
+		<section id="section">
+			<!--
+            	作者：crystal.chengv1@gmail.com
+            	时间：2017-05-18
+            	描述：工具区域
+            -->
+            <ul id="tool">
+            	<li>
+            		<h3>图像</h3>
+            		<hr>
+            		<ul id="image">
+            			<li id="save">
+            				<form action="http://localhost/down.php" id="myform" method="post">
+            				<input type="hidden" id="data" name="data" value="" />
+            				<button onclick="saving()">保存图像</button>	
+            				</form>
+            			</li>
+            			<li id="clear">
+            				<button onclick="clearing()">清空画板</button></li>
+            		</ul>
+            	</li>
+            	<li>
+            		<h3>工具</h3>
+            		<hr />
+            		<ul id="means">
+            			<li id="means_brush"  onclick="drawBrush(0);"><img src="img/Brush.png" /></li>
+						<li id="means_eraser" onclick="drawEraser(1);"><img src="img/Eraser.png" /></li>
+						<li id="means_paint"  onclick="drawPaint(2);"><img src="img/Paint.png" /></li>
+						<li id="means_straw"  onclick="drawStraw(3);"><img src="img/Straw.png" /></li>
+						<li id="means_text"   onclick="drawText(4);"><img src="img/text.png" /></li>
+						<li id="means_magnifier" onclick="drawMagnifier(5);"><img src="img/Magnifier.png" /></li>
+            		</ul>
+            	</li>
+            	<li>
+            		<h3>形状</h3>
+            		<hr />
+            		<ul id="sharp">
+            			<li id="sharp_line" onclick="drawLine(6);"><img src="img/line.png" /></li>
+						<li id="sharp_arc"  onclick="drawArc(7);"><img src="img/arc.png" /></li>
+						<li id="sharp_rect" onclick="drawRect(8);"><img src="img/rect.png" /></li>
+						<li id="sharp_poly" onclick="drawPoly(9);"><img src="img/poly.png" /></li>
+						<li id="sharp_arcfill" onclick="drawArcfill(10);"><img src="img/arcfill.png" /></li>
+						<li id="sharp_rectfill" onclick="drawRectfill(11);"><img src="img/rectfill.png" /></li>
+            		</ul>
+            	</li>
+            	<li>
+            		<h3>线框</h3>
+            		<hr />
+            		<ul id="size">
+            			<li id="size_line1px" onclick="setLine(0)"><img src="img/line1px.png" alt="" /></li>
+            			<li id="size_line3px" onclick="setLine(1)"><img src="img/line3px.png" alt="" /></li>
+            			<li id="size_line5px" onclick="setLine(2)"><img src="img/line5px.png" alt="" /></li>
+            			<li id="size_line8px" onclick="setLine(3)"><img src="img/line8px.png" alt="" /></li>
+            		</ul>
+            	</li>
+            	<li>
+            		<h3>颜色</h3>
+            		<hr />
+            		<ul id="color">
+            			<li id="red" onclick="setColor(this,0)"></li>
+            			<li id="yellow" onclick="setColor(this,1)"></li>
+            			<li id="black" onclick="setColor(this,2)"></li>
+            			<li id="white" onclick="setColor(this,3)"></li>
+            			<li id="pink" onclick="setColor(this,4)"></li>
+            			<li id="green" onclick="setColor(this,5)"></li>
+            			<li id="cyan" onclick="setColor(this,6)"></li>
+            			<li id="blue" onclick="setColor(this,7)"></li>
+            			<li id="purple" onclick="setColor(this,8)"></li>
+            			<li id="orange" onclick="setColor(this,9)"></li>
+            		</ul>
+            	</li>
+            </ul>
+            <!--
+            	作者：crystal.chengv1@gmail.com
+            	时间：2017-05-18
+            	描述：绘图区域
+            -->
+            <canvas id="canvas" width="880" height="400"></canvas>
+            <script type="text/javascript"  src="js/draw.js"></script>
+		</section>
+		<footer id="footer">
+			<small>版权所有，盗版必究@crystal</small>
+		</footer>
+	</body>
+</html>

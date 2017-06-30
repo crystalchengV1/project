@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+		<video src="video/movie.webm" controls=>您的浏览器不支持该视频播放</video>
+		<hr />
+		多资源的视频播放
+		<video  controls="controls" width="500" height="500"  loop="loop" poster="video/PLMM.jpg">
+			<source src="video/movie.ogg" type="video/ogg"/>
+			<source src="video/movie.webm" type="video/webm"/>
+			
+		</video>
+		-->
+		使用以下video标签的API(谷歌浏览器使用currentTime要求视频引用完整的地址)
+		<br />
+		<video src="http://www.runoob.com/try/demo_source/movie.mp4" controls="controls" id="video">
+			
+		</video>
+		<button onclick="playrun()">播放</button>
+		<button onclick="stoprun()">暂停</button>
+		<button onclick="fastrun()">快进2秒</button>
+		<button onclick="lowrun()">快退2 秒</button>
+		<button onclick="shut(this)">静音</button>
+		<button onclick="quick()">加速播放</button>
+		<button onclick="low()">减速播放</button>
+		<button onclick="normal()">正常播放</button>
+		<button onclick="voice()">音量+++</button>
+		<button onclick="reduce()">音量---</button>
+		
+		<script type="text/javascript">
+			var video=document.getElementById("video");
+			function playrun(){
+				video.play();
+			}
+			function stoprun(){
+				video.pause();
+			}
+			function fastrun(){
+				console.log(video.currentTime);
+				video.currentTime+=2;
+				console.log(video.currentTime);
+			}
+			function lowrun(){
+				video.currentTime-=2;
+			}
+			function shut(obj)
+			{
+				if(video.muted){
+					video.muted=false;
+					obj.innerHTML="声音";
+				}else{
+					video.muted=true;
+					obj.innerHTML="静音";
+				}
+			}
+			function quick()
+			{
+				video.playbackRate=3;
+			}
+			function low(){
+				video.playbackRate=1/3;
+			}
+			function normal()
+			{
+				video.playbackRate=1;
+			}
+			function voice(){
+				video.volume=0.2;//声音值得范围是0-1
+			}
+			function reduce(){
+				video.volume=0.2
+			}
+		</script>
+		<hr />
+		<audio src="video/我的好兄弟.mp3" controls="controls"></audio>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#imgbox
+			{
+				width: 500px;
+				height: 500px;
+				background: #00FFFF;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var imgbox=document.getElementById("imgbox");
+				imgbox.ondragover=function(e){
+					e.preventDefault();
+				}
+				imgbox.ondrop=function(e){
+					e.preventDefault();
+					var f=e.dataTransfer.files[0];
+					var fileRead=new FileReader();
+					fileRead.onload=function(e){
+						imgbox.innerHTML="<img src=\""+fileRead.result+"\">";
+					}
+					fileRead.readAsDataURL(f);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="imgbox"></div>
+	</body>
+</html>

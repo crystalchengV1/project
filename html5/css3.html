@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h3~p{
+				color: #00FFFF;
+			}
+			li:nth-child(3){
+				color: #008000;
+				font-size: 20px;
+			}
+			li:nth-last-child(1){
+				color:red;
+				font-size: 20px;
+			}
+			input:disabled{
+				background: yellow;
+				color: #000;
+			}
+			input:enabled
+			{
+				background: #f90;
+				color: red;
+			}
+			input:checked+span
+			{
+				width:60px;
+				background: red;
+			}
+			p[id="100"]{
+				background: red;
+			}
+			p[class~="a"]{
+				background: #800080;
+			}
+			p[class|="a"]{
+				background: blue;
+			}
+			a[href^="http://"]{
+				color:red;
+				text-decoration: none;
+			}
+			a[href$="rar"]{
+				color:pink;
+			}
+			a[href$="rar"]:after
+			{
+				content: url(img/arc.png);
+			}
+			a[href*='o']
+			{
+				background: #808080;
+			}
+			p::first-line{color: red;}
+			p::first-letter{color: green;}
+			a::before{
+				content: "before";
+			}
+			a:after
+			{
+				content:url(img/Brush.png);
+			}
+			span::selection
+			{
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			春苗不觉醒<br />
+			处处大声道群无<br />
+			vsdvsdfgvnsdiughnwo你才素<br />
+			处处大声<br />
+		</p>
+		<hr />
+		<a href="#">文章</a>
+		<hr />
+		<span>2017-05-05</span>
+		<div>
+			<p>第一个</p>
+			<p>第二个</p>
+			<h3>第三个</h3>
+			<p>第四个</p>
+			<p>第五个</p>
+			<p>第六个</p>
+			<p>第七个</p>
+			<ul>
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+				<li>第四个</li>
+				<li>第五个</li>
+				<li>第六个</li>
+			</ul>
+		</div>
+		<form action="">
+			<input type="text" name="user" value="222" disabled/>
+			<input type="text" name="user" />
+			<input type="radio" name="w" value="0" checked/><span>121</span>
+			<input type="radio" name="w" value="1"/><span>3333</span>
+			<input type="radio" name="w" value="2"/><span>65666</span>
+			<input type="checkbox" name="w1" value="2"/><span>999</span>
+			<input type="checkbox" name="w1" value="7"/><span>888</span>
+			<input type="checkbox" name="w1" value="9"/><span>777</span>
+		</form>
+		<p id="100">你好</p>
+		<p id="1001">你好</p>
+		<p id="10011">你好</p>
+		<p class="a v d">你好</p>
+		<p class="a">你好</p>
+		<p class="a-b">你好</p>
+		<hr />
+		<a href="http://www.baidu.com" >百度</a>
+		<a href="#">百度12</a>
+		<a href="down.rar">百度12344444444</a>
+	</body>
+</html>
