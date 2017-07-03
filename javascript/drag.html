@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *
+    {
+      margin:0;
+      padding:0;
+    }
+    #box
+    {
+      /*margin: 100px;*/
+      border:1px solid #ccc;
+      position: absolute;
+      top:0;
+      left:0;
+      width:600px;
+      height: 400px;
+    }
+    #box:hover{
+      cursor: pointer;
+    }
+    #dragbox
+    {
+      position: absolute;
+      top:0;
+      height:0;
+      width:600px;
+      height: 400px;
+      background-color: antiquewhite;
+      z-index: 1;
+      fliter:alpha(opacity=0);
+      opacity:0;
+
+    }
+    #drag
+    {
+      position: absolute;
+      top:0px;
+      height:0;
+      width:600px;
+      height: 400px;
+    }
+
+  </style>
+  <script>
+    window.onload=function () {
+        var dragbox=document.getElementById("dragbox");
+        dragbox.onmousedown=drag;
+    }
+    function drag(e)
+    {
+        e = e || window.event;
+       var box=document.getElementById("box");
+        var left=e.clientX-box.offsetLeft;
+        var top=e.clientY-box.offsetTop;
+        document.onmousemove=function(e){
+            e = e || window.event;
+            fmove(e,left,top);
+        }
+        // 释放鼠标
+        document.onmouseup=function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+     }
+     function fmove(e,left,top) {
+        var box=document.getElementById("box");
+        var l=e.clientX-left;
+        var t=e.clientY-top;
+        var width=document.documentElement.clientWidth||document.body.clientWidth;
+        var height=document.documentElement.clientHeight||document.body.clientHeight;
+        if(l<0){
+            l=0;
+        }else if(l>width-box.offsetWidth){
+            l=width-box.offsetWidth;
+        }
+         if(t<0){
+             t=0;
+         }else if(t>height-box.offsetHeight){
+             t=height-box.offsetHeight;
+         }
+        box.style.left=l+'px';
+        box.style.top=t+'px';
+
+     }
+  </script>
+</head>
+<body>
+<div id="box">
+  <div class="text" id="dragbox">拖拽区</div>
+  <img id="drag" src="img/1.jpg" alt="">
+</div>
+</body>
+</html>

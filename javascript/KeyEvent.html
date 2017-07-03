@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *
+    {
+      margin: 0;
+      padding: 0;
+    }
+
+    #title
+    {
+      font-size: 30px;
+      width: 400px;
+      margin: 0 auto;
+      padding-top: 30px;
+      text-align: center;
+      font-weight: bold;
+      color: #f00;
+    }
+    .btns
+    {
+      width:222px;
+      height:30px;
+      margin: 0 auto;
+    }
+    .btns span
+     {
+      display: block;
+      float: left;
+      width:80px;
+      height:30px;
+      line-height:30px;
+      background: #036;
+      border:1px solid #eee;
+      border-radius:7px;
+      margin-right: 10px;
+      margin-top: 10px;
+      margin-: 10px;
+      color:#fff;
+      text-align: center;
+      font-size:14px;
+      font-family:"微软雅黑";
+      cursor: pointer;
+     }
+  </style>
+  <script>
+    var data=['苹果电脑','ipad','电视机','佳能相机','笔记本电脑','打印机','冰箱','电视','1000元','电瓶车','谢谢参与'];
+    var timer=null;
+    var flag=0;
+    window.onload=function () {
+        var title=document.getElementById("title");
+        var start=document.getElementById("start");
+        var stop=document.getElementById("stop");
+        //鼠标点击事件
+        start.onclick=play;
+        stop.onclick=stopFun;
+
+        //键盘点击事件
+        document.onkeyup=function (event) {
+            event=event||window.event;
+            if(event.keyCode==13)
+            {
+              if(flag==0){
+                  play();
+              }else{
+                  stopFun();
+              }
+            }
+        }
+        function play() {
+            clearInterval(timer);
+            timer=setInterval(function () {
+                var random=Math.floor(Math.random()*data.length);//0-10
+                title.innerHTML=data[random];
+            },50);
+            start.style.background="#999";
+            flag=1;
+        }
+        function stopFun(){
+            clearInterval(timer);
+            start.style.background="#036";
+            flag=0;
+        }
+    }
+
+  </script>
+</head>
+<body>
+<div id="title">开始抽奖啦</div>
+<div class="btns">
+  <span id="start">开始</span>
+  <span id="stop">暂停</span>
+</div>
+</body>
+</html>

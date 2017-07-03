@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QQStatus</title>
+  <style>
+    *
+    {
+      margin:0;
+      padding:0;
+      list-style: none;
+      font-size: 10px;
+    }
+    .login-state-trigger
+    {
+      cursor: pointer;
+      display: block;
+      float: left;
+      height: 16px;
+      overflow: hidden;
+      width:120px;
+      margin-top:100px;
+      margin-left:100px;
+    }
+    #select
+    {
+      background: url("img/ptlogin.png") no-repeat scroll 0 -22px transparent;
+      float: left;
+      height: 6px;
+      width: 7px;
+      margin-top: 5px;
+      overflow: hidden;
+      /*text-indent: -999em;*/
+    }
+    #icon
+    {
+      float: left;
+      height: 14px;
+      overflow: hidden;
+      width:14px;
+      margin: 1px 4px 0 0;
+    }
+    .state_text
+    {
+      float: left;
+      margin-left: 5px;
+      line-height:18px;
+    }
+    .login-state .callme {
+      background: url("img/ptlogin.png") -72px 0 no-repeat;
+    }
+
+    .login-state .online {
+      background: url("img/ptlogin.png") 0 0 no-repeat;
+    }
+
+    .login-state .away {
+      background: url("img/ptlogin.png") -18px 0 no-repeat;
+    }
+
+    .login-state .busy {
+      background: url("img/ptlogin.png") -36px 0 no-repeat;
+    }
+
+    .login-state .silent {
+      background: url("img/ptlogin.png") -108px 0 no-repeat;
+    }
+
+    .login-state .hidden {
+      background: url("img/ptlogin.png") -54px 0 no-repeat;
+    }
+
+    #login_state_panel
+    {
+      display: none;
+      position: absolute;
+      top:118px;
+      left:96px;
+      z-index: 10;
+      border:1px solid #ccc;
+      width: 100px;
+      height: 133px;
+      overflow: hidden;
+      background-color: #fff;
+      font-size: 12px;
+      line-height:1.5;
+    }
+    #login_state_panel  .statePanel_li
+    {
+      display: block;
+      float: left;
+      padding:3px 0;
+      width: 100px;
+      height: 16px;
+      line-height:16px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    #login_state_panel  .statePanel_li:hover
+    {
+      background-color: #cccccc;
+    }
+    .stateSelect_icon
+    {
+      float: left;
+      margin:2px 0 0 5px;
+      width: 14px;
+      height:14px;
+      overflow: hidden;
+    }
+    .stateSelect_text
+    {
+      margin:0 0 0 22px;
+    }
+  </style>
+  <script>
+      function getByClass(clsName,parent){
+          var oParent=parent?document.getElementById(parent):document;
+          var eles=[];
+          var elements=oParent.getElementsByTagName('*');
+          for(var i=0,l=elements.length;i<l;i++){
+              if(elements[i].className==clsName){
+                  eles.push(elements[i]);
+              }
+          }
+          return eles;
+      }
+    window.onload=function () {
+        var loginstate=document.getElementById("loginstate");
+        var panel=document.getElementById("login_state_panel");
+        var icon=document.getElementById("icon");
+        var li=panel.getElementsByTagName("li");
+        var oldtext=document.getElementById("state_text");
+        loginstate.onclick=function(e){
+            e=e||window.event;
+            if(e.stopPropagation){
+                e.stopPropagation();
+            }else{
+                e.cancelBubble=true;
+            }
+            panel.style.display="block";
+        }
+        //鼠标滑过。滑出、点击事件
+        for(var i=0;i<li.length;i++){
+            li[i].onmouseover=function () {
+                this.style.backgroundColor="#567";
+            }
+            li[i].onmouseout=function () {
+                this.style.backgroundColor="#fff";
+            }
+            li[i].onclick=function (e) {
+                e = e || window.event;
+                if(e.stopPropagation){
+                    e.stopPropagation();
+                }else{
+                    e.cancelBubble=true;
+                }
+                var id=this.id;
+                panel.style.display='none';
+                var newtext=getByClass('stateSelect_text',id)[0].innerHTML;
+                oldtext.innerHTML=newtext;
+                icon.className=id;
+            }
+        }
+        document.onclick=function() {
+            panel.style.display="none";
+        }
+    }
+
+  </script>
+</head>
+<body>
+<div id="loginstate" class="login-state-trigger login-state">
+    <div id="icon" class="online"></div>
+    <div id="select"></div>
+    <div id="state_text" class="state_text">我在线上</div>
+    <ul id="login_state_panel" class="login-state">
+      <li id="online" class="statePanel_li">
+        <div class="stateSelect_icon online"></div>
+        <div class="stateSelect_text">我在线上</div>
+      </li>
+      <li id="callme" class="statePanel_li">
+        <div class="stateSelect_icon callme"></div>
+        <div class="stateSelect_text">Q我吧</div>
+      </li>
+      <li id="away" class="statePanel_li">
+        <div class="stateSelect_icon away"></div>
+        <div class="stateSelect_text">离开</div>
+      </li>
+      <li id="busy" class="statePanel_li">
+        <div class="stateSelect_icon busy"></div>
+        <div class="stateSelect_text">忙碌</div>
+      </li>
+      <li id="silent" class="statePanel_li">
+        <div class="stateSelect_icon silent"></div>
+        <div class="stateSelect_text">请勿打扰</div>
+      </li>
+      <li id="hidden" class="statePanel_li">
+        <div class="stateSelect_icon hidden"></div>
+        <div class="stateSelect_text">隐身</div>
+      </li>
+    </ul>
+</div>
+</body>
+</html>

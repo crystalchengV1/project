@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>京东菜单栏动画效果</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    #container
+    {
+      width:1200px;
+      margin:100px auto;
+      display: block;
+    }
+    #title
+    {
+      width:220px;
+      height:35px;
+      text-align: center;
+      background-color: cornflowerblue;
+    }
+    #title a
+    {
+      font-size:20px;
+      line-height:35px;
+      color: #fff;
+    }
+    #oneMenu
+    {
+      display: none;
+      width:220px;
+      height: auto;
+      background-color: lightblue;
+      position:relative;
+    }
+    #oneMenu ul li
+    {
+      padding-left: 10px;
+      height: 30px;
+      line-height:30px;
+    }
+    #oneMenu ul li a
+    {
+      color:#000;
+      margin-right: 5px;
+      padding-left: 5px;
+    }
+    #oneMenu ul li a:hover
+    {
+      color: blue;
+      font-size: 18px;
+    }
+    #oneMenu .lihover
+    {
+      border: 1px solid #ccc;
+      border-top: none;
+      box-shadow: 0 0 8px #DDD;
+      -moz-box-shadow: 0 0 8px #DDD;
+      -webkit-box-shadow: 0 0 8px #DDD;
+      background-color: cornflowerblue;
+    }
+    .sedMenu
+    {
+      display: none;
+      position: absolute;
+      z-index:5;
+      top:0px;
+      left:220px;
+      width:1000px;
+      height:400px;
+      background-color: lightsteelblue;
+      border: 1px solid lightblue;
+      box-shadow: 1px 0 5px lightblue;
+      -moz-box-shadow: 1px 0 5px lightblue;
+      -webkit-box-shadow: 1px 0 5px lightblue;
+      overflow: hidden;
+    }
+
+    .sedMenu dl
+    {
+      margin-top: 5px;
+      display: block;
+      overflow: hidden;
+      padding-bottom: 4px;
+      border-bottom:1px solid #000 ;
+      /*height: 35px;*/
+    }
+    .sedMenu dl dt
+    {
+      display: block;
+      float: left;
+      width: 60px;
+      height: 30px;
+      line-height:30px;
+      text-align:right;
+      /*overflow: hidden;*/
+    }
+    .sedMenu dl dt a
+    {
+      font-size:16px;
+      font-weight: bold;
+      text-decoration:underline;
+      letter-spacing: 2px;
+    }
+    .sedMenu dl dd
+    {
+      overflow: hidden;
+    }
+    .sedMenu dl dd a
+    {
+      display:block;
+      float:left;
+      border-left:1px solid #fff;
+      font-size:14px;
+      text-align:center;
+      margin:5px 0;
+      line-height: 20px;
+      padding:0 10px;
+      overflow: hidden;
+    }
+  </style>
+  <script>
+    window.onload=function(){
+        var container=document.getElementById("container");
+        var title=document.getElementById("title");
+        var oneMenu=document.getElementById("oneMenu");
+        var lis=oneMenu.getElementsByTagName("li");
+        var divs=oneMenu.getElementsByTagName("div");
+        title.onmouseover=function(){
+            oneMenu.style.display="block";
+        }
+        container.onmouseover=function(){
+            oneMenu.style.display="block";
+        }
+        container.onmouseout=function(){
+            oneMenu.style.display="none";
+        }
+        title.onmouseout=function(){
+            oneMenu.style.display="none";
+        }
+        for(var i=0;i<lis.length;i++){
+            lis[i].index=i;
+            lis[i].onmouseover=function(){
+                for(var i=0;i<lis.length;i++){
+                    lis[i].className=" ";
+                 }this.className="lihover";
+                for(var i=0;i<divs.length;i++){
+                    divs[i].style.display="none";
+                }divs[this.index].style.display="block";
+            }
+            lis[i].onmouseout=function(){
+                for(var i=0;i<lis.length;i++){
+                    lis[i].className=" ";
+                }
+                for(var i=0;i<divs.length;i++){
+                    divs[i].style.display="none";
+                }
+            }
+        }
+
+    }
+  </script>
+</head>
+<body>
+<div id="container">
+  <div id="title"><a>全部分类</a></div>
+  <div id="oneMenu">
+    <ul>
+      <li>
+        <a href="#">零食</a>/<a href="#">酒类</a>/<a href="#">生鲜</a>
+        <div class="sedMenu">
+          <dl>
+            <dt><a href="#">西瓜</a></dd>
+            <dd>
+              <a href="#">香蕉</a>
+              <a href="#">梨子</a>
+              <a href="#">哈密瓜</a>
+              <a href="#">葡萄</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">酒类</a></dt>
+            <dd>
+              <a href="">酒类1</a>
+              <a href="">酒类2</a>
+              <a href="">酒类3</a>
+              <a href="">酒类4</a>
+              <a href="">酒类5</a>
+              <a href="">酒类6</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">生鲜</a></dt>
+            <dd>
+              <a href="">生鲜1</a>
+              <a href="">生鲜2</a>
+              <a href="">生鲜3</a>
+              <a href="">生鲜4</a>
+              <a href="">生鲜5</a>
+              <a href="">生鲜6</a>
+              <a href="">生鲜0000</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11222232</a>
+              <a href="">生鲜113434</a>
+              <a href="">生鲜114545</a>
+              <a href="">生鲜11565</a>
+              <a href="">生鲜115</a>
+              <a href="">生鲜11</a>
+            </dd>
+          </dl>
+        </div>
+      </li>
+      <li>
+        <a href="">电器</a>/<a href="">厨具</a>
+        <div class="sedMenu">
+          <dl>
+            <dt><a href="#">电器</a></dd>
+            <dd>
+              <a href="#">电器</a>
+              <a href="#">电器</a>
+              <a href="#">电器</a>
+              <a href="#">电器</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">厨具</a></dt>
+            <dd>
+              <a href="">厨具</a>
+              <a href="">厨具</a>
+              <a href="">厨具</a>
+              <a href="">酒类4</a>
+              <a href="">酒类5</a>
+              <a href="">酒类6</a>
+            </dd>
+          </dl>
+          </dl>
+        </div>
+      </li>
+      <li><a href="">美容</a>/<a href="">护肤</a>
+        <div class="sedMenu">
+          <dl>
+            <dt><a href="#">美容</a></dd>
+            <dd>
+              <a href="#">美容</a>
+              <a href="#">美容</a>
+              <a href="#">哈密瓜</a>
+              <a href="#">葡萄</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">护肤</a></dt>
+            <dd>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+              <a href="">护肤</a>
+            </dd>
+          </dl>
+        </div>
+      </li>
+      <li><a href="">洗护</a>/<a href="">美妆</a>/<a href="">母婴</a>
+        <div class="sedMenu">
+          <dl>
+            <dt><a href="#">洗护</a></dd>
+            <dd>
+              <a href="#">洗护</a>
+              <a href="#">洗护</a>
+              <a href="#">洗护</a>
+              <a href="#">洗护</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">美妆</a></dt>
+            <dd>
+              <a href="">美妆</a>
+              <a href="">美妆</a>
+              <a href="">美妆</a>
+              <a href="">美妆</a>
+              <a href="">美妆</a>
+              <a href="">美妆</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">母婴</a></dt>
+            <dd>
+              <a href="">母婴</a>
+              <a href="">生母婴鲜2</a>
+              <a href="">生母婴鲜3</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">生母婴鲜11222232</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+              <a href="">母婴</a>
+            </dd>
+          </dl>
+        </div></li>
+      <li><a href="">数码</a>/<a href="">电脑</a>/<a href="">办公</a>
+        <div class="sedMenu">
+          <dl>
+            <dt><a href="#">数码</a></dd>
+            <dd>
+              <a href="#">数码</a>
+              <a href="#">数码</a>
+              <a href="#">数码</a>
+              <a href="#">数码</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">电脑</a></dt>
+            <dd>
+              <a href="">电脑</a>
+              <a href="">电脑</a>
+              <a href="">电脑</a>
+              <a href="">电脑</a>
+              <a href="">电脑</a>
+              <a href="">电脑</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">办公</a></dt>
+            <dd>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+              <a href="">办公</a>
+            </dd>
+          </dl>
+        </div>
+      </li>
+      <li><a href="">家用</a>/<a href="">电器</a>/<a href="">汽车</a>/<a href="">酒店</a>
+        <div class="sedMenu">
+          <dl>
+            <dt><a href="#">家用</a></dd>
+            <dd>
+              <a href="#">家用</a>
+              <a href="#">家用</a>
+              <a href="#">家用</a>
+              <a href="#">家用</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">酒类</a></dt>
+            <dd>
+              <a href="">酒类1</a>
+              <a href="">酒类2</a>
+              <a href="">酒类3</a>
+              <a href="">酒类4</a>
+              <a href="">酒类5</a>
+              <a href="">酒类6</a>
+            </dd>
+          </dl>
+          <dl>
+            <dt><a href="">生鲜</a></dt>
+            <dd>
+              <a href="">生鲜1</a>
+              <a href="">生鲜2</a>
+              <a href="">生鲜3</a>
+              <a href="">生鲜4</a>
+              <a href="">生鲜5</a>
+              <a href="">生鲜6</a>
+              <a href="">生鲜0000</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11</a>
+              <a href="">生鲜11222232</a>
+              <a href="">生鲜113434</a>
+              <a href="">生鲜114545</a>
+              <a href="">生鲜11565</a>
+              <a href="">生鲜115</a>
+              <a href="">生鲜11</a>
+            </dd>
+          </dl>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

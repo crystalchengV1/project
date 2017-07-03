@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#container
+			{
+				width:600px;
+				height: 400px;
+				position: relative;
+				margin: 120px auto;
+				overflow: hidden;
+			}
+			#list
+			{
+				width: 4200px;
+				height: 400px;
+				position: absolute;
+				z-index: 1;
+			}
+			#list img
+			{
+				float: left;
+			}
+			#dot
+			{
+				position: absolute;
+				z-index: 2;
+				width: 120px;
+				left:250px;
+				bottom: 20px;
+				height: 10px;
+			}
+			#dot span
+			{
+				float: left;
+				width: 10px;
+				height: 10px;
+				border:1px solid #fff;
+				border-radius:50%;
+				background-color: #333;
+				margin-right: 10px;
+			}
+		  #dot	.active
+			{
+				background-color:orange;
+			}
+			#pre
+			{
+				left:10px;
+			}
+			#next
+			{
+				right:10px;
+			}
+			.arrow
+			{
+				display: none;
+				position:absolute;
+				z-index: 2;
+				width: 50px;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 38px;
+				font-weight: bold;
+				top:160px;
+				background-color: RGBA(0,0,0,.3);
+        	    color: #fff;
+        	    text-decoration: none;
+			}
+			.arrow:hover
+			{
+				background-color:RGBA(0,0,0,.6);
+			}
+			#container:hover .arrow
+			{
+				display: block;
+			}
+			
+		</style>
+		<script src="js/jquery.1.10.2.js"></script>
+		<script type="text/javascript">
+				window.onload=function()
+				{
+					var contains=document.getElementById("container");
+					var list=document.getElementById("list");
+					var dot=document.getElementById("dot");
+					var span=dot.getElementsByTagName("span");
+					var pre=document.getElementById("pre");
+					var next=document.getElementById("next");
+					var index=0;
+					var setanimal;
+					pre.onclick=function(){
+						animate(+600);
+						if(index==0){
+							index=4;
+						}else{
+							index-=1;
+						}
+						showButton();
+					}
+					next.onclick=function(){
+						animate(-600);
+						if(index==4){
+							index=0;
+						}else{
+							index+=1;
+						}
+						showButton();
+					}
+				    function animate(width){
+				    	var newLeft=parseInt(list.style.left)+width;
+				    	list.style.left=newLeft+'px';
+				    	 if(newLeft>0){
+				    	 	list.style.left=-2400+'px';
+				    	 }
+				    	 if(newLeft<-2400){
+				    	 	list.style.left=0+'px';
+				    	 }
+				    	 
+				    	
+				    }
+				    
+				    function showButton(){
+				    	for(var i=0;i<span.length;i++){
+				    		if(span[i].className=="active"){
+				    			span[i].className="";
+				    			break;
+				    		}
+				    	}
+				    	span[index].className="active";
+				    }
+				    for(var j=0;j<span.length;j++){
+				    	span[j].onclick=function(){
+				    		var newIndex=this.getAttribute("index");
+				    		console.log(index);
+				    		console.log(newIndex);
+				    		var width=-600*(newIndex-index);
+				    		animate(width);
+				    		index=newIndex;
+				    		showButton();
+				    	}
+				    }
+				    
+				    function run(){
+				    	setanimal=setInterval(function(){
+				    		next.onclick();
+				    	},3000);
+				    }
+				    function stop(){
+				    	clearInterval(setanimal);
+				    }
+				    contains.onmousemove=stop;
+				    contains.onmouseout=run;
+				    run();
+				}
+				
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="list" style="left:0px">
+				<img src="img/t1.jpg" alt="" />
+				<img src="img/t2.jpg" alt="" />
+				<img src="img/t3.jpg" alt="" />
+				<img src="img/t4.jpg" alt="" />
+				<img src="img/t5.jpg" alt="" />
+			</div>
+			<div id="dot">
+				<span index="0" class="active"></span>
+				<span index="1"></span>
+				<span index="2"></span>
+				<span index="3"></span>
+				<span index="4"></span>
+			</div>
+			<a href="javascript:;" id="pre" class="arrow">&lt;</a>
+			<a href="javascript:;" id="next" class="arrow">&gt;</a>
+			
+		</div>
+	</body>
+</html>

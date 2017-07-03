@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 *
+	 {
+	 	margin:0;
+	 	padding: 0;
+	 }
+	 #box
+	 {
+	 	width:100px;
+	 	height: 800px;
+	 	position: relative;
+	 	margin: 10px;
+	 }
+	 #smallbox
+	 {
+	 	width:400px;
+	 	height: 255px;
+	 	position:relative;
+	 	border: 1px solid #ccc;
+	 	display: block;
+	 }
+	 #floatbox
+	 {
+	 	/*display: none;*/
+	 	width: 140px;
+	 	height: 99px;
+	 	position: absolute;
+	 	background-color: #ffffcc;
+	 	filter: alpha(opacity=50);
+	 	opacity:0.5;
+	 	border:1px solid #ccc;
+	 }
+	 #bigbox
+	 {
+	 	display: none;
+	 	position: absolute;
+	 	left: 420px;
+	 	top:0;
+	 	width:358px;
+	 	height: 255px;
+	 	border: 1px solid #ccc;
+	 	z-index: 1;
+	 	overflow: hidden;
+
+	 }
+	  #bigbox img
+	  {
+	  	position: absolute;
+	  	z-index: 10;
+	  }
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+			var box=document.getElementById("box");
+			var smallbox=document.getElementById("smallbox");
+			var floatbox=document.getElementById("floatbox");
+			var bigbox=document.getElementById("bigbox");
+			var img=bigbox.getElementsByTagName("img")[0];
+			smallbox.onmouseover=function(){
+				floatbox.style.display="block";
+				bigbox.style.display="block";
+
+			}
+			smallbox.onmouseout=function(){
+				floatbox.style.display='none';
+				bigbox.style.display='none';
+			}
+			smallbox.onmousemove=function(e){
+				var event=e||window.event;
+				var left=event.clientX-box.offsetLeft-smallbox.offsetLeft-floatbox.offsetWidth/2;
+				// console.log("LEFT"+left);
+				// console.log("xxx"+event.clientX);
+				// console.log(box.offsetLeft);
+				// console.log(smallbox.offsetLeft);
+				// console.log(floatbox.offsetWidth/2);
+				var top=event.clientY-box.offsetTop-smallbox.offsetTop-floatbox.offsetHeight/2;
+				if(left<0)
+				{
+					left=0;
+				}else if(left>(smallbox.offsetWidth-floatbox.offsetWidth))
+				{
+					left=smallbox.offsetWidth-floatbox.offsetWidth;
+				}
+				if (top < 0) 
+				{
+					top = 0;
+				} else if (top > (smallbox.offsetHeight - floatbox.offsetHeight)) 
+				{
+					top = smallbox.offsetHeight - floatbox.offsetHeight;
+				}
+				floatbox.style.left=left+'px';
+				floatbox.style.top=top+'px';
+				img.style.left=-(left*(img.offsetWidth/smallbox.offsetWidth))+'px';
+				img.style.top=-(top*(img.offsetHeight/smallbox.offsetHeight))+'px';
+
+
+			}
+	}
+	
+
+
+	</script>
+</head>
+<body>
+ <div id="box">
+	<div id="smallbox">
+		<div id="floatbox"></div>
+		<img src="img/macbook-small.jpg" alt=""/>
+	</div>
+	<div id="bigbox">
+		<img src="img/macbook-big.jpg" alt=""/>
+	</div>
+	
+ </div>
+</body>
+</html>

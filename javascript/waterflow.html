@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS实现瀑布流</title>
+  <script type="text/javascript" src="js/waterflow.js"></script>
+  <style>
+    *
+    {
+      margin:0;
+      padding:0;
+    }
+    #main
+    {
+      position: relative;
+    }
+    .pin
+    {
+      padding:15px 0 0 15px;
+      float: left;
+    }
+    .box
+    {
+      padding:20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 6px #ccc;
+      border-radius: 5px;
+    }
+    .box img{
+      width:200px;
+      height:auto;
+    }
+  </style>
+
+</head>
+<body>
+<div id="main">
+  <div class="pin">
+    <div class="box">
+      <img src="img/w1.jpg" />
+    </div>
+  </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w2.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w3.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w4.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w5.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w10.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w6.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w7.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w11.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w1.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w13.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w8.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w9.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w7.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w7.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w11.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w12.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w13.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w8.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w9.jpg"/>
+      </div>
+    </div>
+    <div class="pin">
+      <div class="box">
+        <img src="img/w2.jpg"/>
+      </div>
+    </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w1.jpg" />
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w2.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w3.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w4.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w5.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w10.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w6.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w7.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w11.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w1.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w13.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w8.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w9.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w7.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w7.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w11.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w12.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w13.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w8.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w9.jpg"/>
+    </div>
+  </div>
+  <div class="pin">
+    <div class="box">
+      <img src="img/w2.jpg"/>
+    </div>
+  </div>
+</div>
+</body>
+</html>

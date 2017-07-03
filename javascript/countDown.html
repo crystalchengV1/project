@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>倒计时练习</title>
+  <style>
+    #time
+    {
+      width: 600px;
+      height: 50px;
+      margin: 100px auto;
+    }
+    #time span
+    {
+      width:100px;
+      border:1px solid #ccc;
+      background-color: #807a62;
+      color:#fff;
+      font-size: 18px;
+    }
+  </style>
+
+</head>
+<body>
+<div id="time">
+  <span id="day">23</span>天
+  <span id="hour">23</span>小时
+  <span id="min">23</span>分
+  <span id="sed">23</span>秒
+</div>
+<script>
+    window.onload=function () {
+        countdown();
+        function countdown() {
+            var time=document.getElementById("time");
+            var span=time.getElementsByTagName("span");
+            var day=document.getElementById("day").innerHTML;
+            var hour=document.getElementById("hour");
+            var min=document.getElementById("min");
+            var sed=document.getElementById("sed");
+            var start=new Date();
+            var end=new Date("2019/05/30,18:00:00");
+            var count=parseInt((end.getTime()-start.getTime())/1000);
+            var countday=parseInt(count/60/60/24);
+            countday=countday<10?"0"+countday:countday;
+            document.getElementById("day").innerHTML=countday;
+            var counthour=parseInt(count/(60*60)%24);
+            counthour=counthour<10?"0"+counthour:counthour;
+            hour.innerHTML=counthour;
+            var countmin=parseInt((count/60)%60);
+            countmin=countmin<10 ? "0"+countmin:countmin;
+            min.innerHTML=countmin;
+            var countsed=parseInt(count%60);
+            countsed=countsed<10 ? "0"+countsed:countsed;
+            sed.innerHTML=countsed;
+            setTimeout(countdown,1000);
+            if(count<=0)
+            {
+                time.style.display="none";
+                document.write("倒计时间已经到")
+            }}
+    }
+</script>
+</body>
+</html>

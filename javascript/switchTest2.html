@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			#container
+			{
+				width: 600px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+				margin:200px auto;
+				border:2px solid #ccc;
+			}
+			#img
+			{
+				position: absolute;
+				z-index: 1;
+			}
+			#container ul li
+			{
+				display: none;
+			}
+			#container ol
+			{
+				position: absolute;
+				z-index: 2;
+				width: 150px;
+				right: 5px;
+				bottom: 10px;
+			}
+			#container ol li
+			{
+				float: left;
+				height: 20px;
+				width:20px;
+				text-align: center;
+				line-height: 20px;
+				background-color:#ccc;
+				color: #000;
+				border:1px solid #000;
+				margin-right: 5px;
+			}
+			#container ol li:hover
+			{
+				cursor: pointer;
+			}
+			#num .on
+			{
+				background-color: orange;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var container=document.getElementById("container");
+				var num=document.getElementById("num");
+				var li=num.getElementsByTagName("li");
+				var img=document.getElementById("img");
+				var imgli=img.getElementsByTagName("li");
+				var index=0;
+				var timer;
+				function run(){
+					timer=setInterval(function(){
+						auto();
+					},1000);
+				}
+				function stop(){
+					clearInterval(timer);
+				}
+				
+				function auto(){
+//					if(++index>=imgli.length){
+//						index=0;
+//					}
+					if(index==4){
+						index=0;
+					}else{
+	                  ++index;
+					}
+					switch1(index);
+				}
+				
+				for(var i=0;i<li.length;i++){
+					li[i].onmousemove=function(){
+						 	clearInterval(timer);
+							index=this.innerText-1;
+							switch1(index);
+					}
+				}
+					function switch1(newIndex){
+						for(var j=0;j<li.length;j++){
+							li[j].className=" ";
+							imgli[j].style.display="none";
+						}
+						li[newIndex].className="on";
+						imgli[newIndex].style.display="block";
+				   }
+					container.onmouseover=stop;
+					container.onmouseout=run;
+					run();
+					
+			}
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<ul id="img">
+				<li style="display:block"><img src="img/t1.jpg" alt=""/></li>
+				<li><img src="img/t2.jpg" alt="" /></li>
+				<li><img src="img/t3.jpg" alt="" /></li>
+				<li><img src="img/t4.jpg" alt="" /></li>
+				<li><img src="img/t5.jpg" alt="" /></li>
+			</ul>
+			<ol id="num">
+				<li class="on">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+	</body>
+</html>

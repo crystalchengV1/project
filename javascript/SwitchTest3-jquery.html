@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			#container
+			{
+				width:600px;
+				height: 400px;
+				position: relative;
+				margin: 120px auto;
+				overflow: hidden;
+			}
+			#list
+			{
+				width: 600px;
+				height: 400px;
+				position: absolute;
+				z-index: 1;
+				overflow:hidden;
+				
+			}
+			#list li
+			{
+				display: none;
+			}
+			
+			#dot
+			{
+				position: absolute;
+				z-index: 2;
+				width: 120px;
+				left:250px;
+				bottom: 20px;
+				height: 10px;
+			}
+			#dot span
+			{
+				float: left;
+				width: 10px;
+				height: 10px;
+				border:1px solid #fff;
+				border-radius:50%;
+				background-color: #333;
+				margin-right: 10px;
+				cursor: pointer;
+			}
+		  #dot	.active
+			{
+				background-color:orange;
+			}
+			#pre
+			{
+				left:10px;
+
+			}
+			#next
+			{
+				right:10px;
+			}
+			.arrow
+			{
+				cursor: pointer;
+				display: none;
+				position:absolute;
+				z-index: 2;
+				width: 50px;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 38px;
+				font-weight: bold;
+				top:160px;
+				background-color: RGBA(0,0,0,.3);
+        	    color: #fff;
+        	    text-decoration: none;
+			}
+			.arrow:hover
+			{
+				background-color:RGBA(0,0,0,.6);
+			}
+			#container:hover .arrow
+			{
+				display: block;
+			}
+			
+		</style>
+		<!-- <script type="text/javascript" src="js/jquery-3.2.1.js"></script> -->
+		<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+		  	var size=$('#list li').size();
+		  	for(var i=1;i<=size;i++)
+		  	{
+		  		var str="<span></span>";
+		  		$('#dot').append(str);
+		  	}
+		  	$('#dot span').eq(0).addClass("active");
+		  	$('#list li').eq(0).show();
+		        	$('#dot span').mouseover(function(){
+						$(this).addClass("active").siblings().removeClass("active");
+						var index=$(this).index();
+						i=index;
+						$('#list li').eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+			})
+
+		  	var i=0;
+		  	var timer=setInterval(auto,1000);
+		  	function auto(){
+		  		i++;
+		  		if(i==size)
+		  		{
+		  			i=0;
+		  		}
+		  		$('#dot span').eq(i).addClass("active").siblings().removeClass("active");
+				$('#list li').eq(i).stop().fadeIn(300).siblings().stop().fadeOut(300);
+		  	}
+		  	$('#container').hover(function(){
+		  		clearInterval(timer)},function(){
+		  		timer=setInterval(auto, 1500)
+		  	})
+		  	$('#container #next').click(function(){
+		  		auto();
+		  	})
+		  	$('#container #pre').click(function(){
+		  		autol();
+		  	})
+		  	function autol(){
+		  		i--;
+		  		if(i==-1)
+		  		{
+		  			i=size-1;
+		  		}
+		  		$('#dot span').eq(i).addClass("active").siblings().removeClass("active");
+				$('#list li').eq(i).stop().fadeIn(300).siblings().stop().fadeOut(300);
+		  	}
+		  	
+            })
+		        
+				
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<ul id="list" style="left:0px">
+				<li><img src="img/t1.jpg" alt="" /></li>
+				<li><img src="img/t2.jpg" alt="" /></li>
+				<li><img src="img/t3.jpg" alt="" /></li>
+				<li><img src="img/t4.jpg" alt="" /></li>
+				<li><img src="img/t5.jpg" alt="" /></li>
+			
+			</ul>
+			<div id="dot">
+				<!-- <span index="0" class="active"></span>
+				<span index="1"></span>
+				<span index="2"></span>
+				<span index="3"></span>
+				<span index="4"></span> -->
+			</div>
+			<div id="pre" class="arrow" btn>&lt;</div>
+			<div id="next" class="arrow" btn>&gt;</div>
+			
+		</div>
+	</body>
+</html>

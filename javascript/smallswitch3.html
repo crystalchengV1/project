@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+		 }
+		 body { background: #666; } 
+			/*#container
+			{
+				width:400px;
+				height: 400px;
+				margin:100 auto;
+				overflow: hidden;
+			}*/
+			#pic
+			{
+				margin-left:100px;
+				width: 400px;
+				height: 320px;
+				overflow: hidden;
+			}
+			#pic li
+			{
+				display: none;
+			}
+			#pic .show{
+				display: block;
+			}
+			#mixpic 
+			{
+				margin-left:100px;
+				height: 80px;
+				width: 400px;
+				overflow: hidden;
+			}
+			#mixpic li
+			{
+				width: 66px;
+				height: 90px;
+				float: left;
+			}
+			#mixpic li:hover
+			{
+				cursor: pointer;
+			}
+			#mixpic li img
+			{
+				width: 66px;
+				height: 66px;
+			}
+		</style>
+		<script type="text/javascript">
+		window.onload=function()
+		{
+			var imgli=document.getElementById("mixpic").getElementsByTagName("li");
+			var li=document.getElementById("pic").getElementsByTagName("li");
+			var timer;
+			var index=0;
+			var mixpic=document.getElementById("mixpic");
+		 	 function strat(){timer=setInterval(function(){
+				  		auto();
+				  	},2000);}
+			function stop()
+			{
+				clearInterval(timer);
+			}
+			function auto(){
+				
+				++index;
+				if(index==6){
+					index=0;
+				}
+				run(index);
+			}
+			for(var i=0;i<imgli.length;i++)
+			{ 
+				imgli[i].index=i;
+				imgli[i].onmouseover=function()
+				{
+					clearInterval(timer);
+					index=this.index;
+					run(index);
+				}
+			}
+				function run(newindex)
+				{
+				for(var j=0;j<li.length;j++)
+				{
+					li[j].className=" ";
+				}
+				li[newindex].className="show";
+			}
+
+		         
+				
+
+				 mixpic.onmouseover=stop;
+				 mixpic.onmouseout=strat;
+				 strat();
+
+			
+			 
+		}
+		   
+		</script>
+	</head>
+	<body>
+		<!-- <div id="container"> -->
+			<ul id="pic">
+				<li class="show"><img src="images/f1.jpg" alt=""/></li>
+				<li ><img src="images/f2.jpg" alt=""/></li>
+				<li><img src="images/f3.jpg" alt=""/></li>
+				<li><img src="images/f4.jpg" alt=""/></li>
+				<li><img src="images/f5.jpg" alt=""/></li>
+				<li><img src="images/f6.jpg" alt=""/></li>
+			</ul>
+			<ul id="mixpic">
+				<li><img src="images/f1.jpg" alt=""/></li>
+				<li><img src="images/f2.jpg" alt=""/></li>
+				<li><img src="images/f3.jpg" alt=""/></li>
+				<li><img src="images/f4.jpg" alt=""/></li>
+				<li><img src="images/f5.jpg" alt=""/></li>
+				<li><img src="images/f6.jpg" alt=""/></li>
+			</ul>
+		<!-- </div> -->
+	</body>
+</html>
