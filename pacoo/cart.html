@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/cart.css" />
+		<script src="js/myfocus-2.0.1.min.js" type="text/javascript" ></script>
+		<script src="js/mf-pattern/mF_YSlider.js" type="text/javascript" charset="gb2312"></script>
+		<link href="js/mf-pattern/mF_YSlider.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript">
+			function show(){
+				var img=document.getElementById("guide");
+				if(img.style.display=="none"){
+					img.style.display="block";
+				}else{
+					img.style.display="none";
+				}
+				
+			}
+			window.onload=function(){
+				var tab=document.getElementById("tab");
+				var lis=tab.getElementsByTagName("li");
+				var content=document.getElementById("content");
+				var divs=content.getElementsByTagName("div");
+				console.log(lis.length);
+				console.log(divs.length);
+				if(lis.length!=divs.length){
+					return ;
+				}
+				for(var i=0;i<lis.length;i++){
+					console.log(lis[i]);
+					console.log(lis[i].index);
+					lis[i].index=i;
+					lis[i].onmousedown=function(){
+						for(var i=0;i<lis.length;i++)
+						{
+							lis[i].className=" ";
+						}
+						this.className="activ";
+						for(var j=0;j<divs.length;j++){
+							divs[j].style.display="none";
+						}
+						console.log(this.index);
+						divs[this.index].style.display="block";
+				}
+			}
+			}
+			
+		</script>
+	</head>
+	<body id="all">
+		<!--top开始-->
+		<div id="top">
+			<div id="top_right">
+				<p>hi 欢迎进入拍库</p>
+				<ul>
+					<li><a href="#">登录</a></li>
+					<li><a href="#">注册</a></li>
+					<li><a href="#">通知</a></li>
+				</ul>
+				<p>联系客服</p>
+				<p>拍库手机</p>
+			</div>
+		</div>
+		<!--top结束-->
+		<!--header开始-->
+		<div id="header">
+			<div id="header_left">
+				<img id="logo" src="img/logo.png"/>
+				<img src="img/gif.gif"/>
+			</div>
+			<div id="header_center">
+				<div class="center_search">
+					<input class="text" type="text"  placeholder="请输入搜索内容"></input>
+					<input class="button" type="button"  value="搜索"></input>
+				</div>
+				<div id="hot">
+					<span id="hotsearch">热门搜索:</span>
+					<span id="search">劳力士 花瓶 手链 项链 戒指 银器 </span>
+				</div>
+			</div>
+			<div id="mine">
+				<div id="car"><img src="img/paipinCar.png"/></div>
+				<span>我的拍品</span>
+				<div id="mine_select">
+					<img src="img/paipinSan.png"  />
+				</div>
+			</div>
+		</div>
+		<!--header结束-->
+		<!--nav开始-->
+		<div id="nav">
+			<div id="classify">
+					<span id="allclass">全部分类</span>
+					<img id="menuButton" src="img/menuBottom.png" />
+			</div>
+			<div id="list">
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">今日推荐</a></li>
+					<li><a href="#">拍卖会</a></li>
+					<li><a href="#">艺术品</a></li>
+					<li><a href="#">名表</a></li>
+					<li><a href="#">珠宝</a></li>
+					<li><a href="#">收藏品</a></li>
+					<li><a href="#">老爷车</a></li>
+					<li><a href="#">相机&乐器</a></li>
+					<li id="hoticon"><a href="#">闪购</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--nav结束-->
+		<!--main结束-->
+		<div id="main">
+			<div id="main_top">
+				<p>当前位置：首页 > 分类列表 > 详情</p>
+			</div>
+			<div id="main_content">
+				<div id="content_left">
+					<div id="left_top">
+						<img src="img/qhc1.png" alt="" />				
+					</div>
+					<div id="left_center">
+						<p id="pre">&lt;</p>
+						<ul>
+							<li><img src="img/qhc.png" alt="" /></li>
+							<li><img src="img/qhc.png" alt="" /></li>
+							<li><img src="img/qhc.png" alt="" /></li>
+							<li><img src="img/qhc.png" alt="" /></li>
+						</ul>
+						<p id="pre">&gt;</p>
+					</div>
+					<img src="img/s.png" alt="" style="margin-top: 10px;"/><a id="share">分享</a>
+				</div>
+				<div id="content_right">
+					<p >Lot 709: A lot divers Chinese porcelain famille verte cahepot Wed, 20th century.</p>
+					<div class="content_detail">
+						<p class="content_text"><span>开拍时间</span><span>2017-05-04 03:00:00</span></p>
+						<p class="content_aution"><span>拍卖会</span><span><a>Auction 159 #2 Sale Arts, Antiques & Collectibles</a></span></p>
+						<p class="content_address"><span>开拍地点</span><span></span></p>
+						<p class="content_start"><span>起拍价</span><span>€</span><span>35</span></p>
+						<p class="content_price"><span>估计报价</span><span>€50-€80</span></p>
+					</div>
+						<div class="content_bottom">
+						<p class="price_text"><span>我的报价</span><span style="margin-right: 5px; font-size: 18px;">€</span>
+							<input type="button" class="min" value="-">
+							<input type="text" class="numbertext" value="50">
+							<input type="button" class="max" value="+">
+								<span class="rules">
+									<a class="pricerules" onclick="show()">出价规则</a>
+									<span><img id="guide" src="img/guize.png" alt=""/></span></span>
+									
+						</p>
+						<div class="pricet_aution" style="clear: left;">
+							<span style="float: left;">建议报价</span>
+							<ul>
+								<li class="active">€70</li>
+								<li><a>€70</a></li>
+								<li><a>€70</a></li>
+							</ul>
+							<span class="about"> (想要胜算更大？报价至少估价的85%)</span>
+							</div>
+						<div class="notice">
+							<span style="float: left;">温馨提示</span>
+							<div class="notice_right">
+									<ul>
+								<li>境外拍卖行佣金（30%）：€15</li>
+								<li>拍库平台服务费（10%）：€5</li>
+								<li>保险费：如需上保险请联系客服,运费和代运服务费以实际为准</li>
+								<li>注：单笔出价$5000以上，保证金需在6000元及以上，违约将扣除相应金额</li>
+								<li>今日汇率7.525701</li>
+							</ul>
+							</div>
+						</div>
+						</div>
+						<div class="total">
+							<span>合计金额：</span>
+							<span>€70 (约合人民币：￥526.8元)</span>
+							<p class="agree">
+								<input type="checkbox">
+								我已同意阅读这拍卖的《条款与协议》
+							</p>
+							<div class="choose">
+								<ul>
+									<li class="actived">立即出价</li>
+									<li>收藏</li>
+									<li>翻译</li>
+								</ul>
+							</div>
+							<p class="notice_bottom">开拍前12小时内不可下单</p>
+							<p class="notice_bottom">为保障竞拍体验，建议您提前24小时下单！</p>
+						</div>
+				</div>
+			</div>
+			<!--content结束-->
+			<div class="content_up">
+				<div class="Love">
+			
+				</div>
+				<div class="content_right">
+					<div class="flow">
+						<p class="flow_title">竞拍流程</p>
+						<img class="png" src="img/liucheng.png" alt="" />
+					</div>
+					<div class="tab_content">
+						<div id="tab">
+							<ul>
+								<li class="item1 activ" style="border: none;">宝贝描述</li>
+								<li class="item2">注意事项</li>
+								<li class="item3">运输</li>
+								<li class="item4">付款</li>
+							</ul>
+						</div>
+						<div id="content">
+							<div class="mod" style="display: block;">
+								<p class="mod1">Description: A lot divers Chinese porcelain famille verte cahepot Wed, 20th century to. 5x. 
+								Request more information Contact: Veilinghuis Omnia Auction: Auction 159 #2 Sale Arts, Antiques
+								 & Collectibles Auction Date/Time: May 3, 2017 Lot: 709: A lot divers Chinese porcelain famille
+								  verte cahepot Wed, 20th century. × Select Subject Send Message Copyright © 1986-2017 Invaluable, LLC. 
+								  and participating auction houses. All Rights Reserved.All content, images, and intellectual property on t
+								  his site protected by digital watermark technology. Digital copying of images strictly prohibited; violators
+								   will be pursued and prosecuted to the full extent of the law including the Digital Millennium Copyright 
+								   Act.Unauthorized use including account sharing of Invaluable will result in permanent account cancellation.
+								  </p>
+							</div>
+							<div class="mod">
+								<p class="mod1">敬告：您的出价行为表明已经认同了拍库网的拍卖规则。不论成功与否，你都承担与之相应的法律行为. </p>
+                                 <p class="mod1">注意：根据《拍卖法》的规定：买受人应当按照约定支付拍卖标的的价款，未按照约定支付价款的，应当承担违约责。通过竞买取得的拍品为特殊属性之商品， 
+		                                     属于2014年3月15日起施行的《中华人民共和国消费者权益保护法》规定的“其他根据商品性质并经消费者在购买时确认不宜退货的商品，
+		                                     不适用无理由退货”。为了维护买卖双方的利益，规范网络拍卖市场的行为，如果因实物与描述明显不符，客户对拍品有退货的诉求，请在提货之日起7个工作日之
+		                                     内、物流发货请在签收之日起7个工作日内提出，逾期不予受理。不便之处，敬请谅解。
+                          </p>
+							</div>
+							<div class="mod">
+								<p class="mod1">西方资产储备运输和处理:</p>
+								<p class="mod1">由于我们的拍品来自于全球多家拍卖行，各拍卖行的运输方式以及运费也不尽相同。
+									买家所支付的费用中，运费为暂定数额，我们在协助买家运回拍品时，会及时与买家联系，告知其运输实际费用并收取差价。</p>
+								<p class="mod1">鉴于每件拍品竞拍时间不同，支付时间也不同，我们无法提供准确的到货时长，但我们保证，
+									发货后7到10个工作日内买家可收到货品，请耐心等待。我们会提供运单跟踪，方便买家查询物流状态。</p>
+							</div>
+							<div class="mod">
+								<p class="mod1">付款方式</p>
+								<p class="mod1">
+									目前充值到平台的金额仅用作保证金，不可抵扣货款。支付货款请打至拍库网指定账户，如下：
+									账户名：拍库（北京）科技有限公司；
+									开户行：招商银行股份有限公司北京朝外大街支行； 
+									账号：1109 1863 6510 601。
+									支付宝：webserver@pecoo.com（请您在转账时在备注处填写您的用户名和手机号）；
+									为保证您的权益，付款时请仔细核对账户，以免造成您的损失，谢谢</p>
+							</div>
+						</div>
+						<div class="pic">
+							<p class="tltle1">拍品展示</p>
+							<p class="tltl">The auction show</p>
+							<img class="pic1" src="img/show.png" alt=" " />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--main结束-->
+		
+	</body>
+</html>

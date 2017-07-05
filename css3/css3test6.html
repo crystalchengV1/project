@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div
+			{
+				position: absolute;
+				background-color: #fff000;
+				top:100px;
+				width: 500px;
+			}
+			@-webkit-keyframes myColor{
+				0%{
+					background-color: red;
+					transform: rotate(0deg);
+				}
+				30%{
+					background-color: aqua;
+					transform: rotate(30deg);
+				}
+				60%{
+					background-color: #EF1639;
+					transform: rotate(-30deg);
+				}
+				100%{
+					background-color: lightblue;
+					transform: rotate(0deg);
+				}
+			}
+			div:hover{
+				-webkit-animation:myColor 5s ease;
+			}
+		
+		</style>
+	</head>
+	<body>
+		<div>sdfgfgsdr</div>
+	</body>
+</html>
