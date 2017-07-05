@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Full Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css"/>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',split:true,title:'north',noheader:true" style="height:60px;background: #666;">
+		<div class="logo">后台管理</div>
+		<div class="logoout">您好,欢迎<span id="name"></span>|<a href="index.html">退出</a></div>
+	</div>
+	<div data-options="region:'west',split:true,title:'导航',iconCls:'icon-world'" style="width:180px;padding:10px;">
+		<ul id="nav"></ul>
+	</div>
+	
+	<div data-options="region:'center'">
+		<div id="tabs">
+			<div iconCls='icon-house' title="起始页" style="padding:0 10px;display: block;">
+				欢迎来到后台登录系统
+			</div>
+		</div>
+	</div>
+	<div data-options="region:'south',split:true,title:'south',noheader:true" style="height:35px;line-height: 30px;text-align: center;">
+		&copy;2009-2015 瓢城 Web 俱乐部. Powered by PHP and EasyUI.
+	</div>
+	<!--<div data-options="region:'east',split:true,title:'East'" style="width:450px;padding:10px;">east region</div>-->
+	
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+</body>
+</html>
